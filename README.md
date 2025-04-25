@@ -1,0 +1,2 @@
+# SMediator
+Mediator pattern library
