@@ -7,17 +7,17 @@ namespace SMediator.Core
     {
         private readonly IServiceProvider _provider = provider;
 
-        public async Task<TResponse> Send<TResponse>(IRequest<TResponse> request, CancellationToken ct = default)
+        public async Task<TResponse> Send<TResponse>(IRequest<TResponse> request, CancellationToken cancellationToken = default)
         {
             var handlerType = typeof(IRequestHandler<,>)
                 .MakeGenericType(request.GetType(), typeof(TResponse));
 
             dynamic handler = _provider.GetRequiredService(handlerType);
 
-            return await handler.Handle((dynamic)request, ct);
+            return await handler.Handle((dynamic)request, cancellationToken);
         }
 
-        public async Task Publish<TNotification>(TNotification notification, CancellationToken ct = default)
+        public async Task Publish<TNotification>(TNotification notification, CancellationToken cancellationToken = default)
             where TNotification : INotification
         {
             var handlerType = typeof(INotificationHandler<>)
@@ -33,10 +33,10 @@ namespace SMediator.Core
                 }
                 if (handler is INotificationHandler<TNotification> genericHandler)
                 {
-                    await genericHandler.Handle(notification, ct);
+                    await genericHandler.Handle(notification, cancellationToken);
                     continue;
                 }
-                await ((dynamic)handler)?.Handle((dynamic)notification, ct);
+                await ((dynamic)handler)?.Handle((dynamic)notification, cancellationToken);
             }
         }
     }
