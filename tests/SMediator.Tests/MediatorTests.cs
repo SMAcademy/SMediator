@@ -1,0 +1,49 @@
+using Microsoft.Extensions.DependencyInjection;
+using SMediator.Core;
+using SMediator.Core.Abstractions;
+
+namespace SMediator.Tests
+{
+    public partial class MediatorTests
+    {
+        private readonly IMediator _mediator;
+
+        public MediatorTests()
+        {
+            var services = new ServiceCollection();
+
+            services.AddSMediator();
+
+            var provider = services.BuildServiceProvider();
+            _mediator = provider.GetRequiredService<IMediator>();
+        }
+
+        [Fact]
+        public async Task Send_PingRequest_ReturnsPong()
+        {
+            // Arrange
+            var request = new PingRequest("Hello");
+
+            // Act
+            var response = await _mediator.Send(request);
+
+            // Assert
+            Assert.Equal("Pong: Hello", response);
+        }
+
+        [Fact]
+        public async Task Publish_MyNotification_WritesToConsole()
+        {
+            // Arrange
+            var writer = new StringWriter();
+            Console.SetOut(writer);
+
+            // Act
+            await _mediator.Publish(new MyNotification("TestNotify"));
+
+            // Assert
+            var output = writer.ToString().Trim();
+            Assert.Equal("Received notification: TestNotify", output);
+        }
+    }
+}
