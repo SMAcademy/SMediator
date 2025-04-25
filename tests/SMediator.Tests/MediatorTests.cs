@@ -35,15 +35,23 @@ namespace SMediator.Tests
         public async Task Publish_MyNotification_WritesToConsole()
         {
             // Arrange
+            var originalOut = Console.Out;
             var writer = new StringWriter();
             Console.SetOut(writer);
 
-            // Act
-            await _mediator.Publish(new MyNotification("TestNotify"));
+            try
+            {
+                // Act
+                await _mediator.Publish(new MyNotification("TestNotify"));
 
-            // Assert
-            var output = writer.ToString().Trim();
-            Assert.Equal("Received notification: TestNotify", output);
+                // Assert
+                var output = writer.ToString().Trim();
+                Assert.Equal("Received notification: TestNotify", output);
+            }
+            finally
+            {
+                Console.SetOut(originalOut);
+            }
         }
     }
 }
