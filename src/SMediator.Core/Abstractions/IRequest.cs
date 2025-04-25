@@ -1,0 +1,5 @@
+﻿namespace SMediator.Core.Abstractions
+{
+    public interface IRequest<out TResponse>
+    { }
+}
