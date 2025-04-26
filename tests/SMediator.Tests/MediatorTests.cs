@@ -1,10 +1,11 @@
 using Microsoft.Extensions.DependencyInjection;
 using SMediator.Core;
 using SMediator.Core.Abstractions;
+using SMediator.Tests.Models;
 
 namespace SMediator.Tests
 {
-    public partial class MediatorTests
+    public class MediatorTests
     {
         private readonly IMediator _mediator;
 
@@ -12,7 +13,11 @@ namespace SMediator.Tests
         {
             var services = new ServiceCollection();
 
-            services.AddSMediator();
+            services.AddSMediator(false)
+                .AddSingleton(typeof(PingRequestHandler))
+                .AddSingleton(typeof(MyNotificationHandler))
+                .AddSingleton<IRequestHandler<PingRequest, string>, PingRequestHandler>()
+                .AddSingleton<INotificationHandler<MyNotification>, MyNotificationHandler>();
 
             var provider = services.BuildServiceProvider();
             _mediator = provider.GetRequiredService<IMediator>();

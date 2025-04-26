@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMediator.Core", "src\SMedi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMediator.Tests", "tests\SMediator.Tests\SMediator.Tests.csproj", "{756074E3-FFC5-0899-68DD-608F0022AA56}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMediator.Examples.ProductApi", "examples\SMediator.Examples.ProductApi\SMediator.Examples.ProductApi.csproj", "{BAD5BFED-31C8-46ED-BBAE-948D2124B5B5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{756074E3-FFC5-0899-68DD-608F0022AA56}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{756074E3-FFC5-0899-68DD-608F0022AA56}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{756074E3-FFC5-0899-68DD-608F0022AA56}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAD5BFED-31C8-46ED-BBAE-948D2124B5B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAD5BFED-31C8-46ED-BBAE-948D2124B5B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAD5BFED-31C8-46ED-BBAE-948D2124B5B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAD5BFED-31C8-46ED-BBAE-948D2124B5B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

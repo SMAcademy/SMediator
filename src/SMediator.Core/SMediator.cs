@@ -20,23 +20,16 @@ namespace SMediator.Core
         public async Task Publish<TNotification>(TNotification notification, CancellationToken cancellationToken = default)
             where TNotification : INotification
         {
-            var handlerType = typeof(INotificationHandler<>)
-                .MakeGenericType(notification.GetType());
+            var handlers = _provider.GetServices<INotificationHandler<TNotification>>() ?? [];
 
-            var handlers = _provider.GetServices(handlerType) ?? [];
-
-            foreach (object? handler in handlers)
+            foreach (var handler in handlers)
             {
                 if (handler is null)
                 {
                     continue;
                 }
-                if (handler is INotificationHandler<TNotification> genericHandler)
-                {
-                    await genericHandler.Handle(notification, cancellationToken);
-                    continue;
-                }
-                await ((dynamic)handler)?.Handle((dynamic)notification, cancellationToken);
+
+                await handler.Handle(notification, cancellationToken);
             }
         }
     }

@@ -1,6 +1,6 @@
 using SMediator.Core.Abstractions;
 
-namespace SMediator.Tests
+namespace SMediator.Tests.Models
 {
     public class MyNotificationHandler : INotificationHandler<MyNotification>
     {
