@@ -19,10 +19,10 @@ A lightweight, zero-dependency **Mediator** implementation for .NET 8+ that fol
 
 ## Installation
 
-Install via NuGet (not ready yet):
+Install via NuGet:
 
 ```bash
-dotnet add package SMediator
+dotnet add package SMediator.Core
 ```
 
 Your project will reference **SMediator** and bring in the required abstractions.
@@ -34,7 +34,7 @@ Your project will reference **SMediator** and bring in the required abstractions
 1. **Register SMediator** in `Program.cs`:
 
    ```csharp
-   using SMediator;
+   using SMediator.Core;
    using Microsoft.Extensions.DependencyInjection;
 
    var builder = WebApplication.CreateBuilder(args);

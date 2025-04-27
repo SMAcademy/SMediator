@@ -4,10 +4,25 @@
 		<TargetFramework>net8.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
+		<!-- Package info -->
+		<PackageId>SMediator.Core</PackageId>
+		<Version>1.0.0</Version>
+		<Authors>Gökhan Türkmen</Authors>
+		<Company>Siliconmade Academy - Turkiye</Company>
+		<Description>A zero-dependency mediator library for .NET 8+</Description>
+		<PackageTags>mediator;mediatr;di;patterns</PackageTags>
+		<RepositoryUrl>https://github.com/SMAcademy/SMediator</RepositoryUrl>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<PackageProjectUrl>https://github.com/SMAcademy/SMediator</PackageProjectUrl>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
+
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<Copyright>Copyright (c) 2025 SMediator authors</Copyright>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.4" />
+		<None Include="..\..\README.md" Pack="true" PackagePath="\"/>
 	</ItemGroup>
 
 </Project>
